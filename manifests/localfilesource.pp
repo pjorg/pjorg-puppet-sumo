@@ -7,7 +7,6 @@ define sumo::localfilesource (
   $category = undef,
   $hostName = undef,
   $timeZone = undef,
-  $sourceType = undef,
   $automaticDateParsing = undef,
   $multilineProcessingEnabled = undef,
   $useAutolineMatching = undef,
@@ -15,13 +14,14 @@ define sumo::localfilesource (
   $forceTimeZone = undef,
   $defaultDateFormat = undef,
   $filters = undef,
-  $pathExpression = undef,
+  $pathExpression,
   $blacklist = undef,
   $encoding = undef,
 ) {
   include sumo
   include sumo::params
 
+  $sourceType = 'LocalFile'
   $log_sync_dir  = $sumo::params::log_sync_dir
 
   file { "${log_sync_dir}/${name}.json":
