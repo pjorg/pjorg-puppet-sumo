@@ -2,21 +2,21 @@
 #
 #
 define sumo::localfilesource (
-  String[1] $sourceName,
-  String[1] $description = undef,
-  String[1] $category = undef,
-  String[1] $hostName = undef,
-  String[1] $timeZone = undef,
-  Boolean   $automaticDateParsing = undef,
-  Boolean   $multilineProcessingEnabled = undef,
-  Boolean   $useAutolineMatching = undef,
-  String[1] $manualPrefixRegexp = undef,
-  Boolean   $forceTimeZone = undef,
-  String[1] $defaultDateFormat = undef,
-  Array[String]  $filters = undef,
-  String[1] $pathExpression,
-  Array[String]  $blacklist = undef,
-  String[5] $encoding = undef,
+  $sourceName,
+  $description = undef,
+  $category = undef,
+  $hostName = undef,
+  $timeZone = undef,
+  $automaticDateParsing = undef,
+  $multilineProcessingEnabled = undef,
+  $useAutolineMatching = undef,
+  $manualPrefixRegexp = undef,
+  $forceTimeZone = undef,
+  $defaultDateFormat = undef,
+  $filters = undef,
+  $pathExpression,
+  $blacklist = undef,
+  $encoding = undef,
 ) {
   include sumo
   include sumo::params

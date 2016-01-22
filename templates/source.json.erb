@@ -12,11 +12,22 @@
                 <% unless @manualPrefixRegexp.nil? %>"manualPrefixRegexp": "<%= @manualPrefixRegexp %>",<% end %>
                 <% unless @forceTimeZone.nil? %>"forceTimeZone": "<%= @forceTimeZone %>",<% end %>
                 <% unless @defaultDateFormat.nil? %>"defaultDateFormat": "<%= @defaultDateFormat %>",<% end %>
-                <% unless @filters.nil? %>"filters": "<%= @filters %>",<% end %>
+                <% unless @filters.nil? %>
+                  "filters": [
+                  <% @filters.each do |filter| %>
+                  "<%= filter %>",
+                  <% end %>
+                  ]
+                <% end %>
                 <% unless @pathExpression.nil? %>"pathExpresion": "<%= @pathExpression %>",<% end %>
-                <% unless @blacklist.nil? %>"blacklist": "<%= @blacklist %>",<% end %>
+                <% unless @blacklist.nil? %>
+                  "blacklist": [
+                  <% @blacklist.each do |blacklistentry| %>
+                  "<%= blacklistentry %>",
+                  <% end %>
+                  ]
+                <% end %>
                 <% unless @encoding.nil? %>"encoding": "<%= @encoding %>",<% end %>
                 "name": "<%= @sourceName %>"
         }
 }
-
