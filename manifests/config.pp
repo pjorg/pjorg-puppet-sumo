@@ -20,6 +20,7 @@ class sumo::config {
   }
 
   sumo::localfilesource {'myLocalFileSource':
-    sourceName => 'myLocalFileSourceName',
+    sourceName     => 'myLocalFileSourceName',
+    pathExpression => '/var/log/notareallog.log',
   }
 }
