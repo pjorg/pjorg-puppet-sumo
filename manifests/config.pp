@@ -5,11 +5,11 @@ class sumo::config {
   include sumo::params
   
   sumo::conf {'/etc/sumo.conf':
-    $accessid  => 'accessid123',
-    $accesskey => 'accesskey12',
-    $proxyHost => 'sumoproxy.lab2.local',
-    $proxyPort => '8080',
-    $syncSources => $::sumo::params::log_sync_dir,
+    accessid  => 'accessid123',
+    accesskey => 'accesskey12',
+    proxyHost => 'sumoproxy.lab2.local',
+    proxyPort => '8080',
+    syncSources => $::sumo::params::log_sync_dir,
   }
 
   file { $::sumo::params::sumo_service_config:
