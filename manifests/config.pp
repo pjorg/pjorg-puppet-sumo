@@ -22,6 +22,8 @@ class sumo::config {
   sumo::localfilesource {'myLocalFileSource':
     sourceName     => 'myLocalFileSourceName',
     pathExpression => '/var/log/notareallog.log',
-    filters        => ['filter1','filter2']
+    filters        => ['filter1','filter2'],
+    automaticDateParsing => true,
+    blacklist      => ['blacklist1','blacklist2']
   }
 }
