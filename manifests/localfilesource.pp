@@ -3,27 +3,26 @@
 #
 define sumo::localfilesource (
   $sourceName,
-  $description,
-  $category,
-  $hostName,
-  $timeZone,
-  $sourceType,
-  $automaticDateParsing,
-  $multilineProcessingEnabled,
-  $useAutolineMatching,
-  $manualPrefixRegexp,
-  $forceTimeZone,
-  $defaultDateFormat,
-  $filters,
-  $pathExpression,
-  $blacklist,
-  $encoding,
+  $description = undef,
+  $category = undef,
+  $hostName = undef,
+  $timeZone = undef,
+  $sourceType = undef,
+  $automaticDateParsing = undef,
+  $multilineProcessingEnabled = undef,
+  $useAutolineMatching = undef,
+  $manualPrefixRegexp = undef,
+  $forceTimeZone = undef,
+  $defaultDateFormat = undef,
+  $filters = undef,
+  $pathExpression = undef,
+  $blacklist = undef,
+  $encoding = undef,
 ) {
   include sumo
   include sumo::params
 
   $log_sync_dir  = $sumo::params::log_sync_dir
-  $name    = $sourceName.gsub(/\s+/, '')
 
   file { "${log_sync_dir}/${name}.json":
     owner   => 'root',
