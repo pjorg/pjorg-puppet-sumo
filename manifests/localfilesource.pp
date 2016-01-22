@@ -28,7 +28,7 @@ define sumo::localfilesource (
     owner   => 'root',
     group   => 'root',
     mode    => '0600',
-    content => 'this is the content'
+    content => template("${module_name}/source.json.erb"),
   }
 }
 
