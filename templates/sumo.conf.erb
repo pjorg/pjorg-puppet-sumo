@@ -2,15 +2,15 @@
 <% end 
 unless @accesskey.nil? %>accesskey=<%= @accesskey %>
 <% end 
-unless @clobber.nil? %>clobber=<%= @clobber.downcase %>
+unless @clobber.nil? %>clobber=<%= @clobber.to_s.downcase %>
 <% end 
 unless @email.nil? %>email=<%= @email %>
 <% end 
-unless @ephemeral.nil? %>ephemeral=<%= @ephemeral.downcase %>
+unless @ephemeral.nil? %>ephemeral=<%= @ephemeral.to_s.downcase %>
 <% end 
 unless @collectorName.nil? %>name=<%= @collectorName %>
 <% end 
-unless @override.nil? %>override=<%= @override.downcase %>
+unless @override.nil? %>override=<%= @override.to_s.downcase %>
 <% end 
 unless @password.nil? %>password=<%= @password %>
 <% end 
