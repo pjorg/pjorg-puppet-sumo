@@ -22,7 +22,7 @@ define sumo::localfilesource (
   include sumo::params
 
   $sourceType = 'LocalFile'
-  $syncSources  = $::sumo::params::syncSources
+  $syncSources  = $::sumo::syncSources
 
   file { "${syncSources}/${name}.json":
     owner   => 'root',
