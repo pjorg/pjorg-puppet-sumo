@@ -17,6 +17,6 @@ class sumo (
   $proxyUser = $::sumo::params::proxyUser,
   $sources = $::sumo::params::sources,
   $syncSources = $::sumo::params::syncSources,
-) {
+) inherits sumo::params {
   include sumo::params, sumo::install, sumo::config, sumo::service
 }
