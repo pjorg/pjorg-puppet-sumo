@@ -1,0 +1,47 @@
+{
+    "api.version": "v1",
+    "source": {
+<% unless @description.nil?             %>        "description": "<%= @description %>",
+<% end
+unless @category.nil?                   %>        "category": "<%= @category %>",
+<% end
+unless @hostName.nil?                   %>        "hostName": "<%= @hostName %>",
+<% end
+unless @timeZone.nil?                   %>        "timeZone": "<%= @timeZone %>",
+<% end
+                                        %>        "sourceType": "<%= @sourceType %>",
+<% unless @automaticDateParsing.nil?    %>        "automaticDateParsing": "<%= @automaticDateParsing.to_s.upcase %>",
+<% end
+unless @multilineProcessingEnabled.nil? %>        "multilineProcessingEnabled": "<%= @multilineProcessingEnabled.to_s.upcase %>",
+<% end
+unless @useAutolineMatching.nil?        %>        "useAutolineMatching": "<%= @useAutolineMatching.to_s.upcase %>",
+<% end
+unless @manualPrefixRegexp.nil?         %>        "manualPrefixRegexp": "<%= @manualPrefixRegexp %>",
+<% end
+unless @forceTimeZone.nil?              %>        "forceTimeZone": "<%= @forceTimeZone.to_s.upcase %>",
+<% end
+unless @defaultDateFormat.nil?          %>        "defaultDateFormat": "<%= @defaultDateFormat %>",
+<% end
+unless @filters.nil?                    %>        "filters": [<%= @filters.map{ |filter| "\"#{filter}\"" }.join(',') %>],
+<% end
+                                        %>        "pathExpresion": "<%= @pathExpression %>",
+<% end
+unless @blacklist.nil?                  %>        "blacklist": [<%= @blacklist.map{ |blacklistentry| "\"#{blacklistentry}\"" }.join(',') %>],
+<% end
+                                        %>        "remoteHosts": [<%= @remoteHosts.map{ |remoteHost| "\"#{remoteHost}\"" }.join(',') %>],
+<% end
+                                        %>        "remotePort": <%= @remotePort %>,
+<% end
+                                        %>        "remoteUser": "<%= @remoteUser %>",
+<% end
+unless @remotePassword.nil?             %>        "remotePassword": "<%= @remotePassword %>",
+<% end
+unless @keyPath.nil?                    %>        "keyPath": "<%= @keyPath %>",
+<% end
+unless @keyPassword.nil?                %>        "keyPassword": "<%= @keyPassword %>",
+<% end
+                                        %>        "authMethod": "<%= @authMethod %>",
+<% end
+                                        %>        "name": "<%= @sourceName %>"
+    }
+}
