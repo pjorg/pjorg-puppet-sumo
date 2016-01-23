@@ -1,0 +1,35 @@
+{
+    "api.version": "v1",
+    "source": {
+<% unless @description.nil?             %>        "description": "<%= @description %>",
+<% end 
+unless @category.nil?                   %>        "category": "<%= @category %>",
+<% end 
+unless @hostName.nil?                   %>        "hostName": "<%= @hostName %>",
+<% end 
+unless @timeZone.nil?                   %>        "timeZone": "<%= @timeZone %>",
+<% end 
+                                        %>        "sourceType": "<%= @sourceType %>",
+<% unless @automaticDateParsing.nil?    %>        "automaticDateParsing": "<%= @automaticDateParsing.to_s.upcase %>",
+<% end 
+unless @multilineProcessingEnabled.nil? %>        "multilineProcessingEnabled": "<%= @multilineProcessingEnabled.to_s.upcase %>",
+<% end 
+unless @useAutolineMatching.nil?        %>        "useAutolineMatching": "<%= @useAutolineMatching.to_s.upcase %>",
+<% end 
+unless @manualPrefixRegexp.nil?         %>        "manualPrefixRegexp": "<%= @manualPrefixRegexp %>",
+<% end 
+unless @forceTimeZone.nil?              %>        "forceTimeZone": "<%= @forceTimeZone.to_s.upcase %>",
+<% end 
+unless @defaultDateFormat.nil?          %>        "defaultDateFormat": "<%= @defaultDateFormat %>",
+<% end 
+unless @filters.nil?                    %>        "filters": [<%= @filters.map{ |filter| "\"#{filter}\"" }.join(',') %>],
+<% end 
+unless @pathExpression.nil?             %>        "pathExpresion": "<%= @pathExpression %>",
+<% end
+unless @blacklist.nil?                  %>        "blacklist": [<%= @blacklist.map{ |blacklistentry| "\"#{blacklistentry}\"" }.join(',') %>],
+<% end 
+unless @encoding.nil?                   %>        "encoding": "<%= @encoding %>",
+<% end 
+                                        %>        "name": "<%= @sourceName %>"
+    }
+}

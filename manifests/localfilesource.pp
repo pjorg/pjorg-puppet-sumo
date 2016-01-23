@@ -22,13 +22,13 @@ define sumo::localfilesource (
   include sumo::params
 
   $sourceType = 'LocalFile'
-  $log_sync_dir  = $sumo::params::log_sync_dir
+  $syncSources  = $::sumo::params::syncSources
 
-  file { "${log_sync_dir}/${name}.json":
+  file { "${syncSources}/${name}.json":
     owner   => 'root',
     group   => 'root',
     mode    => '0600',
-    content => template("${module_name}/source.json.erb"),
+    content => template("${module_name}/localfilesource.json.erb"),
   }
 }
 
