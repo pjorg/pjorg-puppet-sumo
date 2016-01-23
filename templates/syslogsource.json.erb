@@ -24,10 +24,8 @@ unless @defaultDateFormat.nil?          %>        "defaultDateFormat": "<%= @def
 <% end
 unless @filters.nil?                    %>        "filters": [<%= @filters.map{ |filter| "\"#{filter}\"" }.join(',') %>],
 <% end
-unless @protocol.nil?                   %>        "protocol": "<%= @protocol.upcase %>",
-<% end
-                                        %>        "port": <%= @port %>,
-<% end
-                                        %>        "name": "<%= @sourceName %>"
+                                        %>        "protocol": "<%= @protocol.upcase %>",
+<%                                      %>        "port": <%= @port %>,
+<%                                      %>        "name": "<%= @sourceName %>"
     }
 }

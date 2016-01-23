@@ -14,7 +14,7 @@ define sumo::syslogsource (
   $forceTimeZone = undef,
   $defaultDateFormat = undef,
   $filters = undef,
-  $protocol = undef,
+  $protocol,
   $port,
 ) {
   include sumo
