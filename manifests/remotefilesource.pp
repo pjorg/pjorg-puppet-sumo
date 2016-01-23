@@ -14,7 +14,7 @@ define sumo::remotefilesource (
   $forceTimeZone = undef,
   $defaultDateFormat = undef,
   $filters = undef,
-  $pathExpression,
+  $remotePath,
   $blacklist = undef,
   $remoteHosts,
   $remotePort,
@@ -29,17 +29,17 @@ define sumo::remotefilesource (
   $sourceType = 'RemoteFile'
   $syncSources  = $::sumo::syncSources
 
-  if ($authMethod.downcase == 'password') {
+  if (downcase($authMethod) == 'password') {
     if ($remotePassword == undef) {
       fail('To use password authentication for a remote file source, you must pass a value to remotePassword.')
     } elsif ($keyPath != undef or $keyPassword != undef) {
-      warn('If you are using password authentication for a remote file source, don't pass a keyPath or keyPassword.')
+      warn('If you are using password authentication for a remote file source, do not pass a keyPath or keyPassword.')
     }
-  } elsif ($authMethod.downcase == 'key') {
+  } elsif (downcase($authMethod) == 'key') {
     if ($keyPath == undef) {
       fail('To use key authentication for a remote file source, you must set the path to the key in keyPath.')
     } elsif ($remotePassword != undef) {
-      warn('If you are using key authentication for a remote file source, don't pass a remotePassword.')
+      warn('If you are using key authentication for a remote file source, do not pass a remotePassword.')
     }
   }
 

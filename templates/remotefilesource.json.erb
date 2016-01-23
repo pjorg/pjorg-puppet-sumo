@@ -24,24 +24,21 @@ unless @defaultDateFormat.nil?          %>        "defaultDateFormat": "<%= @def
 <% end
 unless @filters.nil?                    %>        "filters": [<%= @filters.map{ |filter| "\"#{filter}\"" }.join(',') %>],
 <% end
-                                        %>        "pathExpression": "<%= @pathExpression %>",
-<% end
+                                        %>        "remotePath": "<%= @remotePath %>",
+<% 
 unless @blacklist.nil?                  %>        "blacklist": [<%= @blacklist.map{ |blacklistentry| "\"#{blacklistentry}\"" }.join(',') %>],
 <% end
                                         %>        "remoteHosts": [<%= @remoteHosts.map{ |remoteHost| "\"#{remoteHost}\"" }.join(',') %>],
-<% end
-                                        %>        "remotePort": <%= @remotePort %>,
-<% end
-                                        %>        "remoteUser": "<%= @remoteUser %>",
-<% end
-unless @remotePassword.nil?             %>        "remotePassword": "<%= @remotePassword %>",
+<%                                      %>        "remotePort": <%= @remotePort %>,
+<%                                      %>        "remoteUser": "<%= @remoteUser %>",
+<% 
+unless @remotePassword.nil?          %>        "remotePassword": "<%= @remotePassword %>",
 <% end
 unless @keyPath.nil?                    %>        "keyPath": "<%= @keyPath %>",
 <% end
 unless @keyPassword.nil?                %>        "keyPassword": "<%= @keyPassword %>",
 <% end
                                         %>        "authMethod": "<%= @authMethod %>",
-<% end
-                                        %>        "name": "<%= @sourceName %>"
+<%                                      %>        "name": "<%= @sourceName %>"
     }
 }
