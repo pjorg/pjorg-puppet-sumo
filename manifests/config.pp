@@ -22,18 +22,10 @@ class sumo::config {
     syncSources => $::sumo::syncSources
   }
 
-  file { $::sumo::params::syncSources:
+  file { $::sumo::syncSources:
     ensure => 'directory',
     owner  => 'root',
     group  => 'root',
     mode   => '0755',
-  }
-  
-  sumo::localfilesource {'myLocalFileSource':
-    sourceName     => 'myLocalFileSourceName',
-    pathExpression => '/var/log/notareallog.log',
-    filters        => ['filter1','filter2'],
-    automaticDateParsing => true,
-    blacklist      => ['blacklist1','blacklist2']
   }
 }
