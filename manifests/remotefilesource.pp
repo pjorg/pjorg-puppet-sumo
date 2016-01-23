@@ -2,7 +2,7 @@
 #
 #
 define sumo::remotefilesource (
-  $sourceName,
+  $sourceName = $title,
   $description = undef,
   $category = undef,
   $hostName = undef,

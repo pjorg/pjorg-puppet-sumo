@@ -2,7 +2,7 @@
 #
 #
 define sumo::localfilesource (
-  $sourceName,
+  $sourceName = $title,
   $description = undef,
   $category = undef,
   $hostName = undef,

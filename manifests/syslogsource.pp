@@ -2,7 +2,7 @@
 #
 #
 define sumo::syslogsource (
-  $sourceName,
+  $sourceName = $title,
   $description = undef,
   $category = undef,
   $hostName = undef,
