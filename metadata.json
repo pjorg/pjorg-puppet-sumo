@@ -2,7 +2,7 @@
   "name": "pjorg-sumo",
   "version": "0.1.0",
   "author": "pjorg",
-  "summary": "Install the Sumo Logic collector.",
+  "summary": "Install and manage the Sumo Logic collector and its log sources.",
   "license": "MIT License",
   "source": "https://github.com/pjorg/pjorg-puppet-sumo",
   "project_page": "https://github.com/pjorg/pjorg-puppet-sumo/wiki",
