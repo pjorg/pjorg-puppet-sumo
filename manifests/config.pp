@@ -5,11 +5,21 @@ class sumo::config {
   include sumo::params
   
   sumo::conf {'sumo.conf':
-    accessid  => 'accessid123',
-    accesskey => 'accesskey12',
-    proxyHost => 'sumoproxy.lab2.local',
-    proxyPort => '8080',
-    syncSources => $::sumo::params::syncSources,
+    accessid => $::sumo::accessid
+    accesskey => $::sumo::accesskey
+    clobber => $::sumo::clobber
+    collectorName => $::sumo::collectorName
+    email => $::sumo::email
+    ephemeral => $::sumo::ephemeral
+    override => $::sumo::override
+    password => $::sumo::password
+    proxyHost => $::sumo::proxyHost
+    proxyNtlmDomain => $::sumo::proxyNtlmDomain
+    proxyPassword => $::sumo::proxyPassword
+    proxyPort => $::sumo::proxyPort
+    proxyUser => $::sumo::proxyUser
+    sources => $::sumo::sources
+    syncSources => $::sumo::syncSources
   }
 
   file { $::sumo::params::syncSources:

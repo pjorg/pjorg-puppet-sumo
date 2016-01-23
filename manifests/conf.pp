@@ -19,7 +19,6 @@ define sumo::conf (
   $syncSources = undef,
 ) {
   include sumo
-  include sumo::params
   
   if ($accessid != undef or $accesskey != undef) and ($email != undef or $password != undef) {
     fail('You must pass either an accessid/accesskey pair or an email/password pair, not both.')
@@ -32,11 +31,17 @@ define sumo::conf (
   # The docs aren't clear, but it seems like the config file really wants
   # the syncSources value to end in a slash if it's a directory
   if( $syncSources != undef) {
+    file { $syncSources:
+      ensure => 'directory',
+      owner  => 'root',
+      group  => 'root',
+      mode   => '0755',
+    }
     $syncSourcesWithTrailingSlash = "${syncSources}/"    
   } else {
     $syncSourcesWithTrailingSlash = undef
   }
-  
+
   file { $::sumo::params::sumo_service_config:
     ensure  => present,
     owner   => 'root',
