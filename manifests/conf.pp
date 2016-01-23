@@ -29,6 +29,14 @@ define sumo::conf (
     fail('You must pass both the email and password.')
   }
   
+  # The docs aren't clear, but it seems like the config file really wants
+  # the syncSources value to end in a slash if it's a directory
+  if( $syncSources != undef) {
+    $syncSourcesWithTrailingSlash = "${syncSources}/"    
+  } else {
+    $syncSourcesWithTrailingSlash = undef
+  }
+  
   file { $::sumo::params::sumo_service_config:
     ensure  => present,
     owner   => 'root',

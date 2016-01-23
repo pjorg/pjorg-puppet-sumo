@@ -7,10 +7,24 @@ class sumo::params {
       $sumo_package_name   = 'SumoCollector'
       $sumo_service_config  = '/etc/sumo.conf'
       $sumo_service_name  = 'collector'
-      $log_sync_dir    = '/etc/sumo.sources.d'
+      $syncSources    = '/etc/sumo.sources.d'
     }
     default: {
       fail("Module pjorg-sumo does not support osfamily: ${::osfamily}")
     }
   }
+  $accessid = undef
+  $accesskey = undef
+  $clobber = undef
+  $collectorName = undef
+  $email = undef
+  $ephemeral = undef
+  $override = undef
+  $password = undef
+  $proxyHost = undef
+  $proxyNtlmDomain = undef
+  $proxyPassword = undef
+  $proxyPort = undef
+  $proxyUser = undef
+  $sources = undef
 }

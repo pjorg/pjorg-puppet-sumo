@@ -9,10 +9,10 @@ class sumo::config {
     accesskey => 'accesskey12',
     proxyHost => 'sumoproxy.lab2.local',
     proxyPort => '8080',
-    syncSources => $::sumo::params::log_sync_dir,
+    syncSources => $::sumo::params::syncSources,
   }
 
-  file { $::sumo::params::log_sync_dir:
+  file { $::sumo::params::syncSources:
     ensure => 'directory',
     owner  => 'root',
     group  => 'root',
