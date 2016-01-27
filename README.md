@@ -1,17 +1,13 @@
-# pjorg-sumo
+# pjorg-puppet-sumo
 
 #### Table of Contents
 
 1. [Overview](#overview)
-2. [Module Description - What the module does and why it is useful](#module-description)
-3. [Setup - The basics of getting started with sumo](#setup)
+2. [Module Description](#module-description)
+3. [Setup](#setup)
     * [What sumo affects](#what-sumo-affects)
-    * [Setup requirements](#setup-requirements)
     * [Beginning with sumo](#beginning-with-sumo)
-4. [Usage - Configuration options and additional functionality](#usage)
-5. [Reference - An under-the-hood peek at what the module is doing and how](#reference)
-5. [Limitations - OS compatibility, etc.](#limitations)
-6. [Development - Guide for contributing to the module](#development)
+4. [Development](#development)
 
 ## Overview
 
@@ -47,36 +43,40 @@ always have certain log files collected.
 
 ### Beginning with sumo
 
-The very basic steps needed for a user to get the module up and running.
+Before starting, you must make the collector RPM available to your hosts' package
+management. For RedHat-family operating systems, this means that 
+`yum install SumoCollector` should work. If it does not, this module will not 
+function.
 
-If your most recent release breaks compatibility or requires particular steps
-for upgrading, you may wish to include an additional section here: Upgrading
-(For an example, see http://forge.puppetlabs.com/puppetlabs/firewall).
+After that, a basic collector instance can be installed and configured by
+including the `sumo` class in a node's manifest, and passing credentials to
+be used to attach the collector to your Sumo Logic account.
 
-## Usage
+A basic example, using username/password and without any sources:
 
-Put the classes, types, and resources for customizing, configuring, and doing
-the fancy stuff with your module here.
+```node mynode.lab.local {
+  class sumo {
+    email    => 'user@example.com',
+    password => 'usersPassword123!', 
+  }
+}```  
 
-## Reference
+A more advanced example, using a Sumo accessid and with a local file source:
 
-Here, list the classes, types, providers, facts, etc contained in your module.
-This section should include all of the under-the-hood workings of your module so
-people know what the module is touching on their system but don't need to mess
-with things. (We are working on automating this section!)
+```node mynode.lab.local {
+  class sumo {
+    accessid  => 'SumoAccessId',
+    accesskey => 'SumoAccessKey_123ABC/&!',
+  }
 
-## Limitations
+  sumo::localfilesource { 'messages':
+    sourceName => 'message_log'
+    pathExpression => '/var/log/messages',
+  }
+}```  
 
-Presently this module only supports the RHEL family of operating systems. All 
-testing has been done on CentOS 6.
 
 ## Development
 
-Since your module is awesome, other users will want to play with it. Let them
-know what the ground rules for contributing are.
-
-## Release Notes/Contributors/Etc **Optional**
-
-If you aren't using changelog, put your release notes here (though you should
-consider using changelog). You may also add any additional sections you feel are
-necessary or important to include here. Please use the `## ` header.
+Contributions expanding the module to use other portions of the Sumo Logic API
+and/or extending support to other platforms is welcome.
