@@ -54,16 +54,19 @@ be used to attach the collector to your Sumo Logic account.
 
 A basic example, using username/password and without any sources:
 
-~~~node mynode.lab.local {
+~~~puppet
+node mynode.lab.local {
   class sumo {
     email    => 'user@example.com',
     password => 'usersPassword123!', 
   }
-}~~~  
+}
+~~~  
 
 A more advanced example, using a Sumo accessid and with a local file source:
 
-~~~node mynode.lab.local {
+~~~puppet
+node mynode.lab.local {
   class sumo {
     accessid  => 'SumoAccessId',
     accesskey => 'SumoAccessKey_123ABC/&!',
@@ -73,7 +76,8 @@ A more advanced example, using a Sumo accessid and with a local file source:
     sourceName => 'message_log'
     pathExpression => '/var/log/messages',
   }
-}~~~  
+}
+~~~  
 
 
 ## Development
