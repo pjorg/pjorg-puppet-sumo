@@ -1,5 +1,8 @@
+# sumo::remotefilesource
 #
-#
+# Creates a remote file source for the collector to ingest from.
+# This is done by creating a JSON file under the syncSources directory
+# that is configured in sumo.conf.
 #
 define sumo::remotefilesource (
   $sourceName = $title,

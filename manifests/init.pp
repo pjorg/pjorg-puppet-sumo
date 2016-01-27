@@ -1,5 +1,7 @@
+# sumo
 #
-#
+# This class initializes the module. Inputs are based on arguments used
+# in sumo.conf.
 #
 class sumo (
   $accessid = $::sumo::params::accessid,

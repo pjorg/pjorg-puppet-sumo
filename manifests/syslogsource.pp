@@ -1,5 +1,8 @@
+# sumo::syslogsource
 #
-#
+# Creates a syslog source for the collector to ingest from.
+# This is done by creating a JSON file under the syncSources directory
+# that is configured in sumo.conf.
 #
 define sumo::syslogsource (
   $sourceName = $title,

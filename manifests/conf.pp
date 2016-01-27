@@ -1,5 +1,7 @@
+# sumo::conf
 #
-#
+# This class manages the sumo.conf file, which the collector uses to perform 
+# initial setup. 
 #
 define sumo::conf (
   $accessid = undef,

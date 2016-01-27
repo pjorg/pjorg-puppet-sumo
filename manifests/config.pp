@@ -1,5 +1,6 @@
+# sumo::config
 #
-#
+# This class performs all configuration actions for the collector package.
 #
 class sumo::config {
   sumo::conf {'sumo.conf':

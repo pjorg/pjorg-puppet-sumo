@@ -1,5 +1,8 @@
+# sumo::localfilesource
 #
-#
+# Creates a local file source for the collector to ingest from.
+# This is done by creating a JSON file under the syncSources directory
+# that is configured in sumo.conf.
 #
 define sumo::localfilesource (
   $sourceName = $title,

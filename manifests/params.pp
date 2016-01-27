@@ -1,5 +1,6 @@
+# sumo::params
 #
-#
+# Default values for parameters used in the module.
 #
 class sumo::params {
   case $::osfamily {

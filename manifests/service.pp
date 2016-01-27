@@ -1,5 +1,6 @@
+# sumo::service
 #
-#
+# Controls the desired state of the collector service.
 #
 class sumo::service {
   include sumo
