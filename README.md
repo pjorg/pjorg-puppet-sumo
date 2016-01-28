@@ -83,4 +83,4 @@ node mynode.lab.local {
 ## Development
 
 Contributions expanding the module to use other portions of the Sumo Logic API
-and/or extending support to other platforms is welcome.
+and/or extending support to other platforms are welcome.
