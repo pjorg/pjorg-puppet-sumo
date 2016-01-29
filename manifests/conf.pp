@@ -39,7 +39,7 @@ define sumo::conf (
       group  => 'root',
       mode   => '0755',
     }
-    $syncSourcesWithTrailingSlash = "${syncSources}/"    
+    $syncSourcesWithTrailingSlash = "${syncSources}/"
   } else {
     $syncSourcesWithTrailingSlash = undef
   }
