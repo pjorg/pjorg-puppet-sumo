@@ -5,6 +5,7 @@
 # that is configured in sumo.conf.
 #
 define sumo::localfilesource (
+  $pathExpression,
   $sourceName = $title,
   $description = undef,
   $category = undef,
@@ -17,7 +18,6 @@ define sumo::localfilesource (
   $forceTimeZone = undef,
   $defaultDateFormat = undef,
   $filters = undef,
-  $pathExpression,
   $blacklist = undef,
   $encoding = undef,
 ) {

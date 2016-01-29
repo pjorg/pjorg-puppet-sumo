@@ -5,6 +5,11 @@
 # that is configured in sumo.conf.
 #
 define sumo::remotefilesource (
+  $remotePath,
+  $remoteHosts,
+  $remotePort,
+  $remoteUser,
+  $authMethod,
   $sourceName = $title,
   $description = undef,
   $category = undef,
@@ -17,15 +22,10 @@ define sumo::remotefilesource (
   $forceTimeZone = undef,
   $defaultDateFormat = undef,
   $filters = undef,
-  $remotePath,
   $blacklist = undef,
-  $remoteHosts,
-  $remotePort,
-  $remoteUser,
   $remotePassword = undef,
   $keyPath = undef,
   $keyPassword = undef,
-  $authMethod,
 ) {
   include sumo
 

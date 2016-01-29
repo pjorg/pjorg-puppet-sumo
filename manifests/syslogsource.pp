@@ -5,6 +5,8 @@
 # that is configured in sumo.conf.
 #
 define sumo::syslogsource (
+  $protocol,
+  $port,
   $sourceName = $title,
   $description = undef,
   $category = undef,
@@ -17,8 +19,6 @@ define sumo::syslogsource (
   $forceTimeZone = undef,
   $defaultDateFormat = undef,
   $filters = undef,
-  $protocol,
-  $port,
 ) {
   include sumo
 
