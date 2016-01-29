@@ -7,6 +7,13 @@
   "source": "https://github.com/pjorg/pjorg-puppet-sumo",
   "project_page": "https://github.com/pjorg/pjorg-puppet-sumo/wiki",
   "issues_url": "https://github.com/pjorg/pjorg-puppet-sumo/issues",
+  "tags": ["sumologic","logs"]
+  "operatingsystem_support": [
+    {
+      "operatingsystem":"RedHat",
+      "operatingsystemrelease":[ "6.0" ]
+    }
+  ]
   "dependencies": [
     {
       "name": "puppetlabs-stdlib",
