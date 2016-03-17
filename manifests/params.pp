@@ -10,7 +10,7 @@ class sumo::params {
       $sumo_service_name  = 'collector'
       $syncSources    = '/etc/sumo.sources.d'
     }
-    RedHat: {
+    Debian: {
       $sumo_package_name   = 'SumoCollector'
       $sumo_service_config  = '/etc/sumo.conf'
       $sumo_service_name  = 'collector'
