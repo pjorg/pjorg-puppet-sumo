@@ -10,6 +10,12 @@ class sumo::params {
       $sumo_service_name  = 'collector'
       $syncSources    = '/etc/sumo.sources.d'
     }
+    Debian: {
+      $sumo_package_name   = 'SumoCollector'
+      $sumo_service_config  = '/etc/sumo.conf'
+      $sumo_service_name  = 'collector'
+      $syncSources    = '/etc/sumo.sources.d'
+    }
     default: {
       fail("Module pjorg-sumo does not support osfamily: ${::osfamily}")
     }
