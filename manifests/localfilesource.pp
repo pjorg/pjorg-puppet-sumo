@@ -6,6 +6,7 @@
 #
 define sumo::localfilesource (
   $pathExpression,
+  $ensure = present,
   $sourceName = $title,
   $description = undef,
   $category = undef,
@@ -28,10 +29,12 @@ define sumo::localfilesource (
   $syncSources  = $::sumo::syncSources
 
   file { "${syncSources}/${name}.json":
+    ensure  => $ensure,
     owner   => 'root',
     group   => 'root',
     mode    => '0600',
     content => template("${module_name}/localfilesource.json.erb"),
+    notify  => Service[$::sumo::params::sumo_service_name],
   }
 }
 
