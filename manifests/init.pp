@@ -35,6 +35,11 @@
 #   A boolean indicating whether the collector should be deleted automatically
 #   after being offline for 12 hours.
 #
+# [*purge_sumo_sources_d*]
+#   Boolean indicating if /etc/sumo.sources.d should be managed. If true, it
+#   will enable purging so files not managed by Puppet will be removed. Default
+#   is false.
+#
 # [*override*]
 #   A boolean indicating whether the collector should delete existing log
 #   sources amd use only what is described in the sources parameter.
@@ -105,6 +110,7 @@ class sumo (
   $collectorName = $::sumo::params::collectorName,
   $email = $::sumo::params::email,
   $ephemeral = $::sumo::params::ephemeral,
+  $purge_sumo_sources_d = $::sumo::params::purge_sumo_sources_d,
   $override = $::sumo::params::override,
   $password = $::sumo::params::password,
   $proxyHost = $::sumo::params::proxyHost,
@@ -116,4 +122,6 @@ class sumo (
   $syncSources = $::sumo::params::syncSources,
 ) inherits sumo::params {
   include sumo::params, sumo::install, sumo::config, sumo::service
+
+  validate_bool($purge_sumo_sources_d)
 }

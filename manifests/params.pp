@@ -26,6 +26,7 @@ class sumo::params {
   $collectorName = undef
   $email = undef
   $ephemeral = undef
+  $purge_sumo_sources_d = false
   $override = undef
   $password = undef
   $proxyHost = undef

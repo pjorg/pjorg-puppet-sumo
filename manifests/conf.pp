@@ -33,11 +33,21 @@ define sumo::conf (
   # The docs aren't clear, but it seems like the config file really wants
   # the syncSources value to end in a slash if it's a directory
   if( $syncSources != undef) {
+    if $::sumo::purge_sumo_sources_d == true {
+      $syncsources_purge = true
+      $syncsources_recurse = true
+    } else {
+      $syncsources_purge = undef
+      $syncsources_recurse = undef
+    }
+
     file { $syncSources:
-      ensure => 'directory',
-      owner  => 'root',
-      group  => 'root',
-      mode   => '0755',
+      ensure  => 'directory',
+      owner   => 'root',
+      group   => 'root',
+      mode    => '0755',
+      purge   => $syncsources_purge,
+      recurse => $syncsources_recurse,
     }
     $syncSourcesWithTrailingSlash = "${syncSources}/"
   } else {
