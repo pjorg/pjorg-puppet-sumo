@@ -35,4 +35,6 @@ class sumo::params {
   $proxyPort = undef
   $proxyUser = undef
   $sources = undef
+  $run_as_user = undef
+  $run_as_userid = undef
 }
