@@ -4,13 +4,13 @@
 #
 class sumo::params {
   case $::osfamily {
-    RedHat: {
+    'RedHat': {
       $sumo_package_name   = 'SumoCollector'
       $sumo_service_config  = '/etc/sumo.conf'
       $sumo_service_name  = 'collector'
       $syncSources    = '/etc/sumo.sources.d'
     }
-    Debian: {
+    /^(Debian|Ubuntu)$/: {
       $sumo_package_name   = 'SumoCollector'
       $sumo_service_config  = '/etc/sumo.conf'
       $sumo_service_name  = 'collector'
