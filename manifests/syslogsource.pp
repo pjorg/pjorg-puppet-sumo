@@ -28,8 +28,8 @@ define sumo::syslogsource (
 
   file { "${syncSources}/${name}.json":
     ensure  => $ensure,
-    owner   => 'root',
-    group   => 'root',
+    owner   => $::sumo::owner,
+    group   => $::sumo::group,
     mode    => '0600',
     content => template("${module_name}/syslogsource.json.erb"),
     notify  => Service[$::sumo::params::sumo_service_name],

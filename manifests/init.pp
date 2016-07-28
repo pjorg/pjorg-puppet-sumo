@@ -24,13 +24,13 @@
 #   the same name.
 #
 # [*collectorName*]
-#   The name of the collector. Defaults to the hostname. 
+#   The name of the collector. Defaults to the hostname.
 #
 # [*email*]
 #   Specify the email address of the account to use to authenticate to the
-#   Sumo Logic service. If you use this parameter, you must also pass a 
+#   Sumo Logic service. If you use this parameter, you must also pass a
 #   password, and you must NOT pass accessid or accesskey.
-# 
+#
 # [*ephemeral*]
 #   A boolean indicating whether the collector should be deleted automatically
 #   after being offline for 12 hours.
@@ -68,18 +68,24 @@
 #   the module sets this to a directory and uses this directory to pass source
 #   configurations to the collector.
 #
+# [*owner*]
+#   The owner of the collector process and configuration files. Defaults to root.
+#
+# [*group*]
+#   The group of the collector process and configuration files. Defaults to root.
+#
 # === Examples
 #
 # A basic example, using username/password and without any sources:
-# 
+#
 # class sumo {
 #   email    => 'user@example.com',
-#   password => 'usersPassword123!', 
+#   password => 'usersPassword123!',
 # }
 #
 #
 # A more advanced example, using a Sumo accessid and with a local file source:
-# 
+#
 # class sumo {
 #   accessid  => 'SumoAccessId',
 #   accesskey => 'SumoAccessKey_123ABC/&!',
@@ -114,6 +120,8 @@ class sumo (
   $proxyUser = $::sumo::params::proxyUser,
   $sources = $::sumo::params::sources,
   $syncSources = $::sumo::params::syncSources,
+  $owner = $::sumo::params::owner,
+  $group = $::sumo::params::group,
 ) inherits sumo::params {
   include sumo::params, sumo::install, sumo::config, sumo::service
 }

@@ -1,7 +1,7 @@
 # sumo::conf
 #
-# This class manages the sumo.conf file, which the collector uses to perform 
-# initial setup. 
+# This class manages the sumo.conf file, which the collector uses to perform
+# initial setup.
 #
 define sumo::conf (
   $accessid = undef,
@@ -19,9 +19,11 @@ define sumo::conf (
   $proxyUser = undef,
   $sources = undef,
   $syncSources = undef,
+  $owner = undef,
+  $group = undef,
 ) {
   include sumo
-  
+
   if ($accessid != undef or $accesskey != undef) and ($email != undef or $password != undef) {
     fail('You must pass either an accessid/accesskey pair or an email/password pair, not both.')
   } elsif (($accessid == undef and $accesskey != undef) or ($accessid != undef and $accesskey == undef)) {
@@ -29,14 +31,14 @@ define sumo::conf (
   } elsif (($email == undef and $password != undef) or ($email != undef and $password == undef)) {
     fail('You must pass both the email and password.')
   }
-  
+
   # The docs aren't clear, but it seems like the config file really wants
   # the syncSources value to end in a slash if it's a directory
   if( $syncSources != undef) {
     file { $syncSources:
       ensure => 'directory',
-      owner  => 'root',
-      group  => 'root',
+      owner  => $owner,
+      group  => $group,
       mode   => '0755',
     }
     $syncSourcesWithTrailingSlash = "${syncSources}/"
@@ -46,8 +48,8 @@ define sumo::conf (
 
   file { $::sumo::params::sumo_service_config:
     ensure  => present,
-    owner   => 'root',
-    group   => 'root',
+    owner   => $owner,
+    group   => $group,
     mode    => '0600',
     content => template("${module_name}/sumo.conf.erb"),
     require => Class['sumo::install'],

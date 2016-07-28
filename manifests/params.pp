@@ -34,4 +34,6 @@ class sumo::params {
   $proxyPort = undef
   $proxyUser = undef
   $sources = undef
+  $owner = 'root'
+  $group = 'root'
 }

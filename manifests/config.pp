@@ -19,5 +19,7 @@ class sumo::config {
     proxyUser       => $::sumo::proxyUser,
     sources         => $::sumo::sources,
     syncSources     => $::sumo::syncSources,
+    owner           => $::sumo::owner,
+    group           => $::sumo::group,
   }
 }
