@@ -29,7 +29,7 @@ define sumo::conf (
   } elsif (($email == undef and $password != undef) or ($email != undef and $password == undef)) {
     fail('You must pass both the email and password.')
   }
-  
+
   # The docs aren't clear, but it seems like the config file really wants
   # the syncSources value to end in a slash if it's a directory
   if( $syncSources != undef) {
@@ -43,8 +43,8 @@ define sumo::conf (
 
     file { $syncSources:
       ensure  => 'directory',
-      owner   => 'root',
-      group   => 'root',
+      owner   => $::sumo::runasuser,
+      group   => $::sumo::runasuser,
       mode    => '0755',
       purge   => $syncsources_purge,
       recurse => $syncsources_recurse,
@@ -56,8 +56,8 @@ define sumo::conf (
 
   file { $::sumo::params::sumo_service_config:
     ensure  => present,
-    owner   => 'root',
-    group   => 'root',
+    owner   => $::sumo::runasuser,
+    group   => $::sumo::runasuser,
     mode    => '0600',
     content => template("${module_name}/sumo.conf.erb"),
     require => Class['sumo::install'],

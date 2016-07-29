@@ -73,6 +73,14 @@
 #   the module sets this to a directory and uses this directory to pass source
 #   configurations to the collector.
 #
+# [*run_as_user*]
+#   Will set RUN_AS_USER in the init script which will run sumologic against
+#   that user. Also required is run_as_userid
+#
+# [*run_as_userid*]
+#   Will set RUN_AS_USER in the init script which will run sumologic against
+#   that user. Also required is run_as_user
+#
 # === Examples
 #
 # A basic example, using username/password and without any sources:
@@ -120,8 +128,16 @@ class sumo (
   $proxyUser = $::sumo::params::proxyUser,
   $sources = $::sumo::params::sources,
   $syncSources = $::sumo::params::syncSources,
+  $run_as_user = $::sumo::params::run_as_user,
+  $run_as_userid = $::sumo::params::run_as_userid,
+  $runasuser = $run_as_user ? { default => $run_as_user, undef => 'root' }
 ) inherits sumo::params {
   include sumo::params, sumo::install, sumo::config, sumo::service
 
   validate_bool($purge_sumo_sources_d)
+
+  if $run_as_user != undef and $run_as_userid != undef {
+    include sumo::run_as_user
+  }
+
 }
