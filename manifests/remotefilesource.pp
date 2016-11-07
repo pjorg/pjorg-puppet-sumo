@@ -5,49 +5,50 @@
 # that is configured in sumo.conf.
 #
 define sumo::remotefilesource (
-  $remotePath,
-  $remoteHosts,
-  $remotePort,
-  $remoteUser,
-  $authMethod,
-  $ensure = present,
-  $sourceName = $title,
-  $description = undef,
-  $category = undef,
-  $hostName = undef,
-  $timeZone = undef,
-  $automaticDateParsing = undef,
-  $multilineProcessingEnabled = undef,
-  $useAutolineMatching = undef,
-  $manualPrefixRegexp = undef,
-  $forceTimeZone = undef,
-  $defaultDateFormat = undef,
-  $filters = undef,
-  $blacklist = undef,
-  $remotePassword = undef,
-  $keyPath = undef,
-  $keyPassword = undef,
+  $remotepath,
+  $remotehosts,
+  $remoteport,
+  $remoteuser,
+  $authmethod,
+  $ensure                     = present,
+  $sourcename                 = $title,
+  $description                = undef,
+  $category                   = undef,
+  $hostname                   = undef,
+  $timezone                   = undef,
+  $automaticdateparsing       = undef,
+  $multilineprocessingenabled = undef,
+  $useautolinematching        = undef,
+  $manualprefixregexp         = undef,
+  $forcetimezone              = undef,
+  $defaultdateformat          = undef,
+  $filters                    = undef,
+  $blacklist                  = undef,
+  $remotepassword             = undef,
+  $keypath                    = undef,
+  $keypassword                = undef,
 ) {
-  include sumo
 
-  $sourceType = 'RemoteFile'
-  $syncSources  = $::sumo::syncSources
+  include ::sumo
 
-  if (downcase($authMethod) == 'password') {
-    if ($remotePassword == undef) {
+  $sourcetype = 'RemoteFile'
+  $syncsources  = $::sumo::syncsources
+
+  if (downcase($authmethod) == 'password') {
+    if ($remotepassword == undef) {
       fail('To use password authentication for a remote file source, you must pass a value to remotePassword.')
-    } elsif ($keyPath != undef or $keyPassword != undef) {
+    } elsif ($keypath != undef or $keypassword != undef) {
       warn('If you are using password authentication for a remote file source, do not pass a keyPath or keyPassword.')
     }
-  } elsif (downcase($authMethod) == 'key') {
-    if ($keyPath == undef) {
+  } elsif (downcase($authmethod) == 'key') {
+    if ($keypath == undef) {
       fail('To use key authentication for a remote file source, you must set the path to the key in keyPath.')
-    } elsif ($remotePassword != undef) {
+    } elsif ($remotepassword != undef) {
       warn('If you are using key authentication for a remote file source, do not pass a remotePassword.')
     }
   }
 
-  file { "${syncSources}/${name}.json":
+  file { "${syncsources}/${name}.json":
     ensure  => $ensure,
     owner   => 'root',
     group   => 'root',
@@ -56,4 +57,3 @@ define sumo::remotefilesource (
     notify  => Service[$::sumo::params::sumo_service_name],
   }
 }
-

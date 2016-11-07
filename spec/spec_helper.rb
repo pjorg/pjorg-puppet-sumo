@@ -1,17 +1,17 @@
-dir = File.expand_path(File.dirname(__FILE__))
-$LOAD_PATH.unshift File.join(dir, 'lib')
+require 'puppetlabs_spec_helper/module_spec_helper'
 
-require 'mocha'
-require 'puppet'
-require 'rspec'
-require 'spec/autorun'
-
-Spec::Runner.configure do |config|
-    config.mock_with :mocha
-end
-
-# We need this because the RAL uses 'should' as a method.  This
-# allows us the same behaviour but with a different method name.
-class Object
-    alias :must :should
+RSpec.configure do |config|
+  config.hiera_config = 'spec/fixtures/hiera/hiera.yaml'
+  config.before :each do
+    # Ensure that we don't accidentally cache facts and environment between
+    # test cases.  This requires each example group to explicitly load the
+    # facts being exercised with something like
+    # Facter.collection.loader.load(:ipaddress)
+    Facter.clear
+    Facter.clear_messages
+  end
+  config.default_facts = {
+    :environment => 'rp_env',
+    :osfamily    => 'Debian',
+  }
 end

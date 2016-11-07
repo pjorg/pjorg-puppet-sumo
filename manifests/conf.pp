@@ -1,27 +1,28 @@
 # sumo::conf
 #
-# This class manages the sumo.conf file, which the collector uses to perform 
-# initial setup. 
+# This class manages the sumo.conf file, which the collector uses to perform
+# initial setup.
 #
 define sumo::conf (
-  $accessid = undef,
-  $accesskey = undef,
-  $clobber = undef,
-  $email = undef,
-  $ephemeral = undef,
-  $collectorName = undef,
-  $override = undef,
-  $password = undef,
-  $proxyHost = undef,
-  $proxyNtlmDomain = undef,
-  $proxyPassword = undef,
-  $proxyPort = undef,
-  $proxyUser = undef,
-  $sources = undef,
-  $syncSources = undef,
+  $accessid        = undef,
+  $accesskey       = undef,
+  $clobber         = undef,
+  $email           = undef,
+  $ephemeral       = undef,
+  $collectorname   = undef,
+  $override        = undef,
+  $password        = undef,
+  $proxyhost       = undef,
+  $proxyntlmdomain = undef,
+  $proxypassword   = undef,
+  $proxyport       = undef,
+  $proxyuser       = undef,
+  $sources         = undef,
+  $syncsources     = undef,
 ) {
-  include sumo
-  
+
+  include ::sumo
+
   if ($accessid != undef or $accesskey != undef) and ($email != undef or $password != undef) {
     fail('You must pass either an accessid/accesskey pair or an email/password pair, not both.')
   } elsif (($accessid == undef and $accesskey != undef) or ($accessid != undef and $accesskey == undef)) {
@@ -29,10 +30,10 @@ define sumo::conf (
   } elsif (($email == undef and $password != undef) or ($email != undef and $password == undef)) {
     fail('You must pass both the email and password.')
   }
-  
+
   # The docs aren't clear, but it seems like the config file really wants
   # the syncSources value to end in a slash if it's a directory
-  if( $syncSources != undef) {
+  if( $syncsources != undef) {
     if $::sumo::purge_sumo_sources_d == true {
       $syncsources_purge = true
       $syncsources_recurse = true
@@ -41,7 +42,7 @@ define sumo::conf (
       $syncsources_recurse = undef
     }
 
-    file { $syncSources:
+    file { $syncsources:
       ensure  => 'directory',
       owner   => 'root',
       group   => 'root',
@@ -49,13 +50,13 @@ define sumo::conf (
       purge   => $syncsources_purge,
       recurse => $syncsources_recurse,
     }
-    $syncSourcesWithTrailingSlash = "${syncSources}/"
+    $syncsourceswithtrailingslash = "${syncsources}/"
   } else {
-    $syncSourcesWithTrailingSlash = undef
+    $syncsourceswithtrailingslash = undef
   }
 
   file { $::sumo::params::sumo_service_config:
-    ensure  => present,
+    ensure  => file,
     owner   => 'root',
     group   => 'root',
     mode    => '0600',
