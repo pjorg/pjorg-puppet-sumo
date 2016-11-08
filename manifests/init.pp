@@ -24,13 +24,13 @@
 #   the same name.
 #
 # [*collectorName*]
-#   The name of the collector. Defaults to the hostname. 
+#   The name of the collector. Defaults to the hostname.
 #
 # [*email*]
 #   Specify the email address of the account to use to authenticate to the
-#   Sumo Logic service. If you use this parameter, you must also pass a 
+#   Sumo Logic service. If you use this parameter, you must also pass a
 #   password, and you must NOT pass accessid or accesskey.
-# 
+#
 # [*ephemeral*]
 #   A boolean indicating whether the collector should be deleted automatically
 #   after being offline for 12 hours.
@@ -76,15 +76,15 @@
 # === Examples
 #
 # A basic example, using username/password and without any sources:
-# 
+#
 # class sumo {
 #   email    => 'user@example.com',
-#   password => 'usersPassword123!', 
+#   password => 'usersPassword123!',
 # }
 #
 #
 # A more advanced example, using a Sumo accessid and with a local file source:
-# 
+#
 # class sumo {
 #   accessid  => 'SumoAccessId',
 #   accesskey => 'SumoAccessKey_123ABC/&!',
@@ -104,24 +104,25 @@
 # Copyright 2016 Peter D. Jorgensen, unless otherwise noted.
 #
 class sumo (
-  $accessid = $::sumo::params::accessid,
-  $accesskey = $::sumo::params::accesskey,
-  $clobber = $::sumo::params::clobber,
-  $collectorName = $::sumo::params::collectorName,
-  $email = $::sumo::params::email,
-  $ephemeral = $::sumo::params::ephemeral,
+  $accessid             = $::sumo::params::accessid,
+  $accesskey            = $::sumo::params::accesskey,
+  $clobber              = $::sumo::params::clobber,
+  $collectorname        = $::sumo::params::collectorname,
+  $email                = $::sumo::params::email,
+  $ephemeral            = $::sumo::params::ephemeral,
   $purge_sumo_sources_d = $::sumo::params::purge_sumo_sources_d,
-  $override = $::sumo::params::override,
-  $password = $::sumo::params::password,
-  $proxyHost = $::sumo::params::proxyHost,
-  $proxyNtlmDomain = $::sumo::params::proxyNtlmDomain,
-  $proxyPassword = $::sumo::params::proxyPassword,
-  $proxyPort = $::sumo::params::proxyPort,
-  $proxyUser = $::sumo::params::proxyUser,
-  $sources = $::sumo::params::sources,
-  $syncSources = $::sumo::params::syncSources,
+  $override             = $::sumo::params::override,
+  $password             = $::sumo::params::password,
+  $proxyhost            = $::sumo::params::proxyhost,
+  $proxyntlmdomain      = $::sumo::params::proxyntlmdomain,
+  $proxypassword        = $::sumo::params::proxypassword,
+  $proxyport            = $::sumo::params::proxyport,
+  $proxyuser            = $::sumo::params::proxyuser,
+  $sources              = $::sumo::params::sources,
+  $syncsources          = $::sumo::params::syncsources,
 ) inherits sumo::params {
-  include sumo::params, sumo::install, sumo::config, sumo::service
+
+  include ::sumo::params, ::sumo::install, ::sumo::config, ::sumo::service
 
   validate_bool($purge_sumo_sources_d)
 }
