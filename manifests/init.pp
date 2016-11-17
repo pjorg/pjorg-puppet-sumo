@@ -23,7 +23,7 @@
 #   A boolean indicating whether to clobber the an existing collector with
 #   the same name.
 #
-# [*collectorName*]
+# [*collectorname*]
 #   The name of the collector. Defaults to the hostname.
 #
 # [*email*]
@@ -49,25 +49,25 @@
 #   Sumo Logic service. If you use this parameter, you must also pass an
 #   email, and you must NOT pass accessid or accesskey.
 #
-# [*proxyHost*]
+# [*proxyhost*]
 #   The host name of a proxy to use to connect to Sumo Logic.
 #
-# [*proxyNtlmDomain*]
+# [*proxyntlmdomain*]
 #   When using an NTLM proxy, the domain of the user used to authenticate.
 #
-# [*proxyPassword*]
+# [*proxypassword*]
 #   The password to use when authenticating to a proxy.
 #
-# [*proxyPort*]
+# [*proxyport*]
 #   The TCP port to connect to the proxy on.
 #
-# [*proxyUser*]
+# [*proxyuser*]
 #   The username to use when authenticating to a proxy.
 #
 # [*sources*]
 #   Path to JSON file that contains Source configuration.
 #
-# [*syncSources*]
+# [*syncsources*]
 #   The path to a JSON file or a directory containing JSON files with source
 #   configurations. This path is continually monitored for changes. By default,
 #   the module sets this to a directory and uses this directory to pass source
@@ -90,8 +90,8 @@
 #   accesskey => 'SumoAccessKey_123ABC/&!',
 # }
 # sumo::localfilesource { 'messages':
-#   sourceName => 'message_log'
-#   pathExpression => '/var/log/messages',
+#   sourcename => 'message_log'
+#   pathexpression => '/var/log/messages',
 # }
 #
 #

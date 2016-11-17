@@ -2,34 +2,34 @@
     "api.version": "v1",
     "source": {
 <% unless @description.nil?             %>        "description": "<%= @description %>",
-<% end 
+<% end
 unless @category.nil?                   %>        "category": "<%= @category %>",
-<% end 
-unless @hostName.nil?                   %>        "hostName": "<%= @hostName %>",
-<% end 
-unless @timeZone.nil?                   %>        "timeZone": "<%= @timeZone %>",
-<% end 
-                                        %>        "sourceType": "<%= @sourceType %>",
-<% unless @automaticDateParsing.nil?    %>        "automaticDateParsing": "<%= @automaticDateParsing.to_s.upcase %>",
-<% end 
-unless @multilineProcessingEnabled.nil? %>        "multilineProcessingEnabled": "<%= @multilineProcessingEnabled.to_s.upcase %>",
-<% end 
-unless @useAutolineMatching.nil?        %>        "useAutolineMatching": "<%= @useAutolineMatching.to_s.upcase %>",
-<% end 
-unless @manualPrefixRegexp.nil?         %>        "manualPrefixRegexp": "<%= @manualPrefixRegexp %>",
-<% end 
-unless @forceTimeZone.nil?              %>        "forceTimeZone": "<%= @forceTimeZone.to_s.upcase %>",
-<% end 
-unless @defaultDateFormat.nil?          %>        "defaultDateFormat": "<%= @defaultDateFormat %>",
-<% end 
+<% end
+unless @hostname.nil?                   %>        "hostName": "<%= @hostname %>",
+<% end
+unless @timezone.nil?                   %>        "timeZone": "<%= @timezone %>",
+<% end
+                                        %>        "sourceType": "<%= @sourcetype %>",
+<% unless @automaticdateparsing.nil?    %>        "automaticDateParsing": "<%= @automaticdateparsing.to_s.upcase %>",
+<% end
+unless @multilineprocessingenabled.nil? %>        "multilineProcessingEnabled": "<%= @multilineprocessingenabled.to_s.upcase %>",
+<% end
+unless @useautolinematching.nil?        %>        "useAutolineMatching": "<%= @useautolinematching.to_s.upcase %>",
+<% end
+unless @manualprefixregexp.nil?         %>        "manualPrefixRegexp": "<%= @manualprefixregexp %>",
+<% end
+unless @forcetimezone.nil?              %>        "forceTimeZone": "<%= @forcetimezone.to_s.upcase %>",
+<% end
+unless @defaultdateformat.nil?          %>        "defaultDateFormat": "<%= @defaultdateformat %>",
+<% end
 unless @filters.nil?                    %>        "filters": [<%= @filters.map{ |filter| "\"#{filter}\"" }.join(',') %>],
-<% end 
-unless @pathExpression.nil?             %>        "pathExpression": "<%= @pathExpression %>",
+<% end
+unless @pathexpression.nil?             %>        "pathExpression": "<%= @pathexpression %>",
 <% end
 unless @blacklist.nil?                  %>        "blacklist": [<%= @blacklist.map{ |blacklistentry| "\"#{blacklistentry}\"" }.join(',') %>],
-<% end 
+<% end
 unless @encoding.nil?                   %>        "encoding": "<%= @encoding %>",
-<% end 
-                                        %>        "name": "<%= @sourceName %>"
+<% end
+                                        %>        "name": "<%= @sourcename %>"
     }
 }
