@@ -38,4 +38,3 @@ define sumo::localfilesource (
     notify  => Service[$::sumo::params::sumo_service_name],
   }
 }
-
