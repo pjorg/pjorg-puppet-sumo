@@ -22,6 +22,8 @@ unless @forcetimezone.nil?              %>        "forceTimeZone": "<%= @forceti
 <% end
 unless @defaultdateformat.nil?          %>        "defaultDateFormat": "<%= @defaultdateformat %>",
 <% end
+unless @cutoffrelativetime.nil?         %>        "cutoffRelativeTime": "<%= @cutoffrelativetime %>",
+<% end
 unless @filters.nil?                    %>        "filters": [<%= @filters.map{ |filter| "\"#{filter}\"" }.join(',') %>],
 <% end
 unless @pathexpression.nil?             %>        "pathExpression": "<%= @pathexpression %>",
