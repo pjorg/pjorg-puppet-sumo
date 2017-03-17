@@ -6,7 +6,10 @@ else
   gem 'puppet', :require => false
 end
 
-gem 'puppetlabs_spec_helper', '>= 1.2.0'
+# puppetlabs_spec_helper v1.2.* is required for Ruby v1.8.*
+gem 'puppetlabs_spec_helper', '~> 1.2.0'   if RUBY_VERSION < '1.9'
+gem 'puppetlabs_spec_helper', '~> 2.1.0'   if RUBY_VERSION >= '1.9'
+
 gem 'facter', '>= 1.7.0'
 gem 'rspec-puppet'
 gem 'puppet-lint', '~> 2.0'
