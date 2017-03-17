@@ -8,12 +8,12 @@ end
 
 # puppetlabs_spec_helper v1.2.* is required for Ruby v1.8.*
 gem 'puppetlabs_spec_helper', '~> 1.2.0'   if RUBY_VERSION < '1.9'
-gem 'puppetlabs_spec_helper', '~> 2.1.0'   if RUBY_VERSION >= '1.9'
+gem 'puppetlabs_spec_helper', '~> 2.0'   if RUBY_VERSION >= '1.9'
 
 if RUBY_VERSION == '2.0.0'
-  gem 'puppet-syntax', '~> 1.4'
+  gem 'puppet-syntax', '~> 2.3'
 else
-  gem 'puppet-syntax', '~> 2.4'
+  gem 'puppet-syntax', '~> 2.0'
 end
 
 gem 'facter', '>= 1.7.0'
