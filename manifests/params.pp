@@ -11,7 +11,7 @@ class sumo::params {
       $syncSources    = '/etc/sumo.sources.d'
     }
     /^(Debian|Ubuntu)$/: {
-      $sumo_package_name   = 'SumoCollector'
+      $sumo_package_name   = 'sumocollector'
       $sumo_service_config  = '/etc/sumo.conf'
       $sumo_service_name  = 'collector'
       $syncSources    = '/etc/sumo.sources.d'
