@@ -41,9 +41,9 @@ define sumo::conf (
       group  => $group,
       mode   => '0755',
     }
-    $syncSourcesWithTrailingSlash = "${syncSources}/"
+    $syncsourceswithtrailingslash = "${syncsources}/"
   } else {
-    $syncSourcesWithTrailingSlash = undef
+    $syncsourceswithtrailingslash = undef
   }
 
   file { $::sumo::params::sumo_service_config:

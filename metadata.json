@@ -8,19 +8,39 @@
   "project_page": "https://github.com/pjorg/pjorg-puppet-sumo/wiki",
   "issues_url": "https://github.com/pjorg/pjorg-puppet-sumo/issues",
   "tags": ["sumologic","logs"],
+  "dependencies": [
+    {"name":"puppetlabs/stdlib","version_range":">= 4.6.0 < 6.0.0" }
+  ],
+  "requirements": [
+    {"name":"puppet","version_requirement":">= 3.0.0 < 5.0.0" }
+  ],
   "operatingsystem_support": [
     {
-      "operatingsystem":"RedHat",
-      "operatingsystemrelease":[ "6.0" ]
+      "operatingsystem": "RedHat",
+      "operatingsystemrelease": [
+        "6"
+      ]
+    },
+    {
+      "operatingsystem": "CentOS",
+      "operatingsystemrelease": [
+        "6"
+      ]
+    },
+    {
+      "operatingsystem": "OracleLinux",
+      "operatingsystemrelease": [
+        "6"
+      ]
+    },
+    {
+      "operatingsystem": "Scientific",
+      "operatingsystemrelease": [
+        "6"
+      ]
     },
     {
       "operatingsystem":"Debian"
-    }
-  ],
-  "dependencies": [
-    {
-      "name": "puppetlabs/stdlib",
-      "version_range": ">= 1.0.0 < 5.0.0"
     }
   ]
 }

@@ -5,27 +5,27 @@
 <% end
 unless @category.nil?                   %>        "category": "<%= @category %>",
 <% end
-unless @hostName.nil?                   %>        "hostName": "<%= @hostName %>",
+unless @hostname.nil?                   %>        "hostName": "<%= @hostname %>",
 <% end
-unless @timeZone.nil?                   %>        "timeZone": "<%= @timeZone %>",
+unless @timezone.nil?                   %>        "timeZone": "<%= @timezone %>",
 <% end
-                                        %>        "sourceType": "<%= @sourceType %>",
-<% unless @automaticDateParsing.nil?    %>        "automaticDateParsing": "<%= @automaticDateParsing.to_s.upcase %>",
+                                        %>        "sourceType": "<%= @sourcetype %>",
+<% unless @automaticdateparsing.nil?    %>        "automaticDateParsing": "<%= @automaticdateparsing.to_s.upcase %>",
 <% end
-unless @multilineProcessingEnabled.nil? %>        "multilineProcessingEnabled": "<%= @multilineProcessingEnabled.to_s.upcase %>",
+unless @multilineprocessingenabled.nil? %>        "multilineProcessingEnabled": "<%= @multilineprocessingenabled.to_s.upcase %>",
 <% end
-unless @useAutolineMatching.nil?        %>        "useAutolineMatching": "<%= @useAutolineMatching.to_s.upcase %>",
+unless @useautolinematching.nil?        %>        "useAutolineMatching": "<%= @useautolinematching.to_s.upcase %>",
 <% end
-unless @manualPrefixRegexp.nil?         %>        "manualPrefixRegexp": "<%= @manualPrefixRegexp %>",
+unless @manualprefixregexp.nil?         %>        "manualPrefixRegexp": "<%= @manualprefixregexp %>",
 <% end
-unless @forceTimeZone.nil?              %>        "forceTimeZone": "<%= @forceTimeZone.to_s.upcase %>",
+unless @forcetimezone.nil?              %>        "forceTimeZone": "<%= @forcetimezone.to_s.upcase %>",
 <% end
-unless @defaultDateFormat.nil?          %>        "defaultDateFormat": "<%= @defaultDateFormat %>",
+unless @defaultdateformat.nil?          %>        "defaultDateFormat": "<%= @defaultdateformat %>",
 <% end
 unless @filters.nil?                    %>        "filters": [<%= @filters.map{ |filter| "\"#{filter}\"" }.join(',') %>],
 <% end
                                         %>        "protocol": "<%= @protocol.upcase %>",
 <%                                      %>        "port": <%= @port %>,
-<%                                      %>        "name": "<%= @sourceName %>"
+<%                                      %>        "name": "<%= @sourcename %>"
     }
 }
