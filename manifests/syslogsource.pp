@@ -7,26 +7,27 @@
 define sumo::syslogsource (
   $protocol,
   $port,
-  $ensure = present,
-  $sourceName = $title,
-  $description = undef,
-  $category = undef,
-  $hostName = undef,
-  $timeZone = undef,
-  $automaticDateParsing = undef,
-  $multilineProcessingEnabled = undef,
-  $useAutolineMatching = undef,
-  $manualPrefixRegexp = undef,
-  $forceTimeZone = undef,
-  $defaultDateFormat = undef,
-  $filters = undef,
+  $ensure                     = present,
+  $sourcename                 = $title,
+  $description                = undef,
+  $category                   = undef,
+  $hostname                   = undef,
+  $timezone                   = undef,
+  $automaticdateparsing       = undef,
+  $multilineprocessingenabled = undef,
+  $useautolinematching        = undef,
+  $manualprefixregexp         = undef,
+  $forcetimezone              = undef,
+  $defaultdateformat          = undef,
+  $filters                    = undef,
 ) {
-  include sumo
 
-  $sourceType = 'Syslog'
-  $syncSources  = $::sumo::syncSources
+  include ::sumo
 
-  file { "${syncSources}/${name}.json":
+  $sourcetype = 'Syslog'
+  $syncsources  = $::sumo::syncsources
+
+  file { "${syncsources}/${name}.json":
     ensure  => $ensure,
     owner   => $::sumo::owner,
     group   => $::sumo::group,

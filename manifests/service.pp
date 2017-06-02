@@ -3,7 +3,9 @@
 # Controls the desired state of the collector service.
 #
 class sumo::service {
-  include sumo
+
+  include ::sumo
+
   service { $::sumo::params::sumo_service_name:
     ensure     => running,
     hasstatus  => true,

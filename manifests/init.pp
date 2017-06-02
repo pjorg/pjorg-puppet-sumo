@@ -35,6 +35,11 @@
 #   A boolean indicating whether the collector should be deleted automatically
 #   after being offline for 12 hours.
 #
+# [*purge_sumo_sources_d*]
+#   Boolean indicating if /etc/sumo.sources.d should be managed. If true, it
+#   will enable purging so files not managed by Puppet will be removed. Default
+#   is false.
+#
 # [*override*]
 #   A boolean indicating whether the collector should delete existing log
 #   sources amd use only what is described in the sources parameter.
@@ -44,25 +49,25 @@
 #   Sumo Logic service. If you use this parameter, you must also pass an
 #   email, and you must NOT pass accessid or accesskey.
 #
-# [*proxyHost*]
+# [*proxyhost*]
 #   The host name of a proxy to use to connect to Sumo Logic.
 #
-# [*proxyNtlmDomain*]
+# [*proxyntlmdomain*]
 #   When using an NTLM proxy, the domain of the user used to authenticate.
 #
-# [*proxyPassword*]
+# [*proxypassword*]
 #   The password to use when authenticating to a proxy.
 #
-# [*proxyPort*]
+# [*proxyport*]
 #   The TCP port to connect to the proxy on.
 #
-# [*proxyUser*]
+# [*proxyuser*]
 #   The username to use when authenticating to a proxy.
 #
 # [*sources*]
 #   Path to JSON file that contains Source configuration.
 #
-# [*syncSources*]
+# [*syncsources*]
 #   The path to a JSON file or a directory containing JSON files with source
 #   configurations. This path is continually monitored for changes. By default,
 #   the module sets this to a directory and uses this directory to pass source
@@ -91,8 +96,8 @@
 #   accesskey => 'SumoAccessKey_123ABC/&!',
 # }
 # sumo::localfilesource { 'messages':
-#   sourceName => 'message_log'
-#   pathExpression => '/var/log/messages',
+#   sourcename => 'message_log'
+#   pathexpression => '/var/log/messages',
 # }
 #
 #
@@ -123,5 +128,8 @@ class sumo (
   $owner = $::sumo::params::owner,
   $group = $::sumo::params::group,
 ) inherits sumo::params {
-  include sumo::params, sumo::install, sumo::config, sumo::service
+
+  include ::sumo::params, ::sumo::install, ::sumo::config, ::sumo::service
+
+  validate_bool($purge_sumo_sources_d)
 }
