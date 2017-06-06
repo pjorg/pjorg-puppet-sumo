@@ -23,7 +23,7 @@
 #   A boolean indicating whether to clobber the an existing collector with
 #   the same name.
 #
-# [*collectorName*]
+# [*collectorname*]
 #   The name of the collector. Defaults to the hostname.
 #
 # [*email*]
@@ -110,23 +110,24 @@
 # Copyright 2016 Peter D. Jorgensen, unless otherwise noted.
 #
 class sumo (
-  $accessid = $::sumo::params::accessid,
-  $accesskey = $::sumo::params::accesskey,
-  $clobber = $::sumo::params::clobber,
-  $collectorName = $::sumo::params::collectorName,
-  $email = $::sumo::params::email,
-  $ephemeral = $::sumo::params::ephemeral,
-  $override = $::sumo::params::override,
-  $password = $::sumo::params::password,
-  $proxyHost = $::sumo::params::proxyHost,
-  $proxyNtlmDomain = $::sumo::params::proxyNtlmDomain,
-  $proxyPassword = $::sumo::params::proxyPassword,
-  $proxyPort = $::sumo::params::proxyPort,
-  $proxyUser = $::sumo::params::proxyUser,
-  $sources = $::sumo::params::sources,
-  $syncSources = $::sumo::params::syncSources,
-  $owner = $::sumo::params::owner,
-  $group = $::sumo::params::group,
+  $accessid             = $::sumo::params::accessid,
+  $accesskey            = $::sumo::params::accesskey,
+  $clobber              = $::sumo::params::clobber,
+  $collectorname        = $::sumo::params::collectorname,
+  $email                = $::sumo::params::email,
+  $ephemeral            = $::sumo::params::ephemeral,
+  $purge_sumo_sources_d = $::sumo::params::purge_sumo_sources_d,
+  $override             = $::sumo::params::override,
+  $password             = $::sumo::params::password,
+  $proxyhost            = $::sumo::params::proxyhost,
+  $proxyntlmdomain      = $::sumo::params::proxyntlmdomain,
+  $proxypassword        = $::sumo::params::proxypassword,
+  $proxyport            = $::sumo::params::proxyport,
+  $proxyuser            = $::sumo::params::proxyuser,
+  $sources              = $::sumo::params::sources,
+  $syncsources          = $::sumo::params::syncsources,
+  $owner                = $::sumo::params::owner,
+  $group                = $::sumo::params::group,
 ) inherits sumo::params {
 
   include ::sumo::params, ::sumo::install, ::sumo::config, ::sumo::service
