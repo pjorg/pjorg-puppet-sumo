@@ -4,25 +4,26 @@
 # initial setup.
 #
 define sumo::conf (
-  $accessid = undef,
-  $accesskey = undef,
-  $clobber = undef,
-  $email = undef,
-  $ephemeral = undef,
-  $collectorName = undef,
-  $override = undef,
-  $password = undef,
-  $proxyHost = undef,
-  $proxyNtlmDomain = undef,
-  $proxyPassword = undef,
-  $proxyPort = undef,
-  $proxyUser = undef,
-  $sources = undef,
-  $syncSources = undef,
-  $owner = undef,
-  $group = undef,
+  $accessid        = undef,
+  $accesskey       = undef,
+  $clobber         = undef,
+  $email           = undef,
+  $ephemeral       = undef,
+  $collectorname   = undef,
+  $override        = undef,
+  $password        = undef,
+  $proxyhost       = undef,
+  $proxyntlmdomain = undef,
+  $proxypassword   = undef,
+  $proxyport       = undef,
+  $proxyuser       = undef,
+  $sources         = undef,
+  $syncsources     = undef,
+  $owner           = undef,
+  $group           = undef,
 ) {
-  include sumo
+
+  include ::sumo
 
   if ($accessid != undef or $accesskey != undef) and ($email != undef or $password != undef) {
     fail('You must pass either an accessid/accesskey pair or an email/password pair, not both.')
@@ -34,12 +35,22 @@ define sumo::conf (
 
   # The docs aren't clear, but it seems like the config file really wants
   # the syncSources value to end in a slash if it's a directory
-  if( $syncSources != undef) {
-    file { $syncSources:
-      ensure => 'directory',
-      owner  => $owner,
-      group  => $group,
-      mode   => '0755',
+  if( $syncsources != undef) {
+    if $::sumo::purge_sumo_sources_d == true {
+      $syncsources_purge = true
+      $syncsources_recurse = true
+    } else {
+      $syncsources_purge = undef
+      $syncsources_recurse = undef
+    }
+
+    file { $syncsources:
+      ensure  => 'directory',
+      owner   => $owner,
+      group   => $group,
+      mode    => '0755',
+      purge   => $syncsources_purge,
+      recurse => $syncsources_recurse,
     }
     $syncsourceswithtrailingslash = "${syncsources}/"
   } else {
@@ -47,7 +58,7 @@ define sumo::conf (
   }
 
   file { $::sumo::params::sumo_service_config:
-    ensure  => present,
+    ensure  => file,
     owner   => $owner,
     group   => $group,
     mode    => '0600',
