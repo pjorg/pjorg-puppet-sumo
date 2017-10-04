@@ -67,7 +67,7 @@ Second basic example, using username/password with single source json file:
 
 ~~~puppet
 node mynode.lab.local {
-  class sumo {
+  class { 'sumo':
     email                     => 'user@example.com',
     password                  => 'usersPassword123!', 
     syncsourceswithsinglejson => '/path/to/file.json', 

@@ -53,7 +53,9 @@ define sumo::conf (
     }
   }
 
-  validate_absolute_path($syncsourceswithsinglejson)
+  if $syncsourceswithsinglejson != undef {
+    validate_absolute_path($syncsourceswithsinglejson)
+  }
 
   if ( $syncsourceswithsinglejson != undef) {
       $syncsourceswithtrailingslash = $syncsourceswithsinglejson

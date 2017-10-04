@@ -9,7 +9,7 @@
   "issues_url": "https://github.com/pjorg/pjorg-puppet-sumo/issues",
   "tags": ["sumologic","logs"],
   "dependencies": [
-    {"name":"puppetlabs/stdlib","version_range":">= 4.6.0 < 6.0.0" }
+    {"name":"puppetlabs/stdlib","version_requirement":">= 4.6.0 < 6.0.0" }
   ],
   "requirements": [
     {"name":"puppet","version_requirement":">= 3.0.0 < 5.0.0" }
