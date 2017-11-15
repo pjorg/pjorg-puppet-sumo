@@ -11,7 +11,7 @@ class sumo::params {
       $sumo_service_name  = 'collector'
       $syncsources    = '/etc/sumo.sources.d'
     }
-    /^(Debian|Ubuntu)$/: {
+    'Debian': {
       if $::operatingsystem == 'Ubuntu' {
         $sumo_package_name   = 'sumocollector'
       } else {
