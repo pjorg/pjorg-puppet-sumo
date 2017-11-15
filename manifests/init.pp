@@ -73,6 +73,12 @@
 #   the module sets this to a directory and uses this directory to pass source
 #   configurations to the collector.
 #
+# [*owner*]
+#   The owner of the collector process and configuration files. Defaults to root.
+#
+# [*group*]
+#   The group of the collector process and configuration files. Defaults to root.
+#
 # === Examples
 #
 # A basic example, using username/password and without any sources:
@@ -120,6 +126,8 @@ class sumo (
   $proxyuser            = $::sumo::params::proxyuser,
   $sources              = $::sumo::params::sources,
   $syncsources          = $::sumo::params::syncsources,
+  $owner                = $::sumo::params::owner,
+  $group                = $::sumo::params::group,
 ) inherits sumo::params {
 
   include ::sumo::params, ::sumo::install, ::sumo::config, ::sumo::service

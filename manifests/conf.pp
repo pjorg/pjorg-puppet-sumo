@@ -19,6 +19,8 @@ define sumo::conf (
   $proxyuser       = undef,
   $sources         = undef,
   $syncsources     = undef,
+  $owner           = undef,
+  $group           = undef,
 ) {
 
   include ::sumo
@@ -44,8 +46,8 @@ define sumo::conf (
 
     file { $syncsources:
       ensure  => 'directory',
-      owner   => 'root',
-      group   => 'root',
+      owner   => $owner,
+      group   => $group,
       mode    => '0755',
       purge   => $syncsources_purge,
       recurse => $syncsources_recurse,
@@ -57,8 +59,8 @@ define sumo::conf (
 
   file { $::sumo::params::sumo_service_config:
     ensure  => file,
-    owner   => 'root',
-    group   => 'root',
+    owner   => $owner,
+    group   => $group,
     mode    => '0600',
     content => template("${module_name}/sumo.conf.erb"),
     require => Class['sumo::install'],

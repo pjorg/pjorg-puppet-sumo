@@ -12,7 +12,11 @@ class sumo::params {
       $syncsources    = '/etc/sumo.sources.d'
     }
     'Debian': {
-      $sumo_package_name   = 'SumoCollector'
+      if $::operatingsystem == 'Ubuntu' {
+        $sumo_package_name   = 'sumocollector'
+      } else {
+        $sumo_package_name   = 'SumoCollector'
+      }
       $sumo_service_config  = '/etc/sumo.conf'
       $sumo_service_name  = 'collector'
       $syncsources    = '/etc/sumo.sources.d'
@@ -37,4 +41,6 @@ class sumo::params {
   $proxyport = undef
   $proxyuser = undef
   $sources = undef
+  $owner = 'root'
+  $group = 'root'
 }
