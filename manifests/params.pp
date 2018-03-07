@@ -37,4 +37,5 @@ class sumo::params {
   $proxyport = undef
   $proxyuser = undef
   $sources = undef
+  $syncsourceswithsinglejson = undef
 }
