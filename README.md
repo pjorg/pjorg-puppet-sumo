@@ -56,7 +56,7 @@ A basic example, using username/password and without any sources:
 
 ~~~puppet
 node mynode.lab.local {
-  class sumo {
+  class { 'sumo':
     email    => 'user@example.com',
     password => 'usersPassword123!', 
   }
@@ -79,14 +79,14 @@ A more advanced example, using a Sumo accessid and with a local file source:
 
 ~~~puppet
 node mynode.lab.local {
-  class sumo {
+  class { 'sumo':
     accessid  => 'SumoAccessId',
     accesskey => 'SumoAccessKey_123ABC/&!',
   }
 
   sumo::localfilesource { 'messages':
-    sourceName => 'message_log'
-    pathExpression => '/var/log/messages',
+    sourcename     => 'message_log'
+    pathexpression => '/var/log/messages',
   }
 }
 ~~~  

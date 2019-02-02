@@ -121,6 +121,7 @@ class sumo (
   $sources                    = $::sumo::params::sources,
   $syncsources                = $::sumo::params::syncsources,
   $syncsourceswithsinglejson  = $::sumo::params::syncsourceswithsinglejson,
+  $serviceconfig              = $::sumo::params::sumo_service_config,
 ) inherits sumo::params {
 
   include ::sumo::params, ::sumo::install, ::sumo::config, ::sumo::service

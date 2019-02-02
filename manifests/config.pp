@@ -23,5 +23,6 @@ class sumo::config {
     sources                   => $::sumo::sources,
     syncsources               => $::sumo::syncsources,
     syncsourceswithsinglejson => $::sumo::syncsourceswithsinglejson,
+    serviceconfig             => $::sumo::serviceconfig
   }
 }

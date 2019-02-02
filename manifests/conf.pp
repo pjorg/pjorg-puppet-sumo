@@ -20,6 +20,7 @@ define sumo::conf (
   $sources                   = undef,
   $syncsources               = undef,
   $syncsourceswithsinglejson = undef,
+  $serviceconfig             = undef,
 ) {
 
   include ::sumo
@@ -63,7 +64,7 @@ define sumo::conf (
       $syncsourceswithtrailingslash = "${syncsources}/"
   }
 
-  file { $::sumo::params::sumo_service_config:
+  file { $serviceconfig:
     ensure  => file,
     owner   => 'root',
     group   => 'root',
