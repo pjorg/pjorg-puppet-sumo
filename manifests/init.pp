@@ -64,6 +64,8 @@
 # [*proxyuser*]
 #   The username to use when authenticating to a proxy.
 #
+# [*serviceconfig]
+#   Set the filename used for agent configuration.
 # [*sources*]
 #   Path to JSON file that contains Source configuration.
 #
@@ -77,7 +79,7 @@
 #
 # A basic example, using username/password and without any sources:
 #
-# class sumo {
+# class { 'sumo':
 #   email    => 'user@example.com',
 #   password => 'usersPassword123!',
 # }
@@ -85,7 +87,7 @@
 #
 # A more advanced example, using a Sumo accessid and with a local file source:
 #
-# class sumo {
+# class { 'sumo':
 #   accessid  => 'SumoAccessId',
 #   accesskey => 'SumoAccessKey_123ABC/&!',
 # }
@@ -118,10 +120,10 @@ class sumo (
   $proxypassword              = $::sumo::params::proxypassword,
   $proxyport                  = $::sumo::params::proxyport,
   $proxyuser                  = $::sumo::params::proxyuser,
+  $serviceconfig              = $::sumo::params::sumo_service_config,
   $sources                    = $::sumo::params::sources,
   $syncsources                = $::sumo::params::syncsources,
   $syncsourceswithsinglejson  = $::sumo::params::syncsourceswithsinglejson,
-  $serviceconfig              = $::sumo::params::sumo_service_config,
 ) inherits sumo::params {
 
   include ::sumo::params, ::sumo::install, ::sumo::config, ::sumo::service
