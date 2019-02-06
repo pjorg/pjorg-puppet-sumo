@@ -17,10 +17,10 @@ define sumo::conf (
   $proxypassword             = undef,
   $proxyport                 = undef,
   $proxyuser                 = undef,
+  $serviceconfig             = undef,
   $sources                   = undef,
   $syncsources               = undef,
   $syncsourceswithsinglejson = undef,
-  $serviceconfig             = undef,
 ) {
 
   include ::sumo
