@@ -29,3 +29,12 @@ matrix:
 
 notifications:
   email: false
+
+deploy:
+  provider: puppetforge
+  user: pjorg
+  password:
+    secure: "CMJKRj/XHRdCnbUxbNa0TfQnO8vzeZAts1tLaxBaRLTO17yN0mZ4L04LFYxm/fsFpIRN5/gC++VbA07s8wNm1q4xsTO5VpDed2Xd5Ezt7ZWnbptoBlef4oHAizqkF4OdPzPX7SwxaW7URGuHm2/H77VM8g2uJSd157rw3UMUhPzlDqGCICP1qN2UxD5jvY5HW45kM5597m33bzPwfjshmXrJqJv/QRc2VIpIJf1AYKgnMKvtr++1VYtxIUyy7Zt0KZgyBBKwBFDXo6pKbpsAWJ3A0gf3JndiujhDxUicy4nQff2MbmyFrvQL+SlguAAHTWzdiSSxDxtCIvSsZBXZLh92+/ufbw9MtfsRyrAkLnHKsqu5t9rSi054abVpt3Waf92n4fxZ3fBSmYIM7qiNi6OjRzyugstci+PDZIACzbJQHYGRwV4/Smo2W98m2rTL7ok+lm6ww9Mpn0iyZIUQsJyyMp2urbPSKF8V8Go5O+2kehRrSHJE/2d7SjadJSxAeLjB+t6ZuhIklmHUHf+nNceEQDeykGF0OHkU68C9ts06W8bg7AeuY+8UyRMjHNMxNISXe5LIPaGPhl932DRo8JZieBDV6tP1/7fZx081MbM5aL/JiqOkrTKQ+04Cs/dxK/2lOWt0k0Pa6KYvxBzvCLzxSYlOm/jghzzm0CXRLGY="
+  on:
+    tags: true
+    all_branches: true
