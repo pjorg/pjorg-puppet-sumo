@@ -66,6 +66,7 @@
 #
 # [*serviceconfig]
 #   Set the filename used for agent configuration.
+#
 # [*sources*]
 #   Path to JSON file that contains Source configuration.
 #
@@ -91,6 +92,7 @@
 #   accessid  => 'SumoAccessId',
 #   accesskey => 'SumoAccessKey_123ABC/&!',
 # }
+#
 # sumo::localfilesource { 'messages':
 #   sourcename => 'message_log'
 #   pathexpression => '/var/log/messages',
