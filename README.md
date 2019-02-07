@@ -96,3 +96,6 @@ node mynode.lab.local {
 
 Contributions expanding the module to use other portions of the Sumo Logic API
 and/or extending support to other platforms are welcome.
+
+Development targets the latest releases of Puppet versions 5 and 6. See
+`.travis.yml` for an exact matrix.

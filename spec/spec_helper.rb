@@ -11,7 +11,6 @@ RSpec.configure do |config|
     Facter.clear_messages
   end
   config.default_facts = {
-    :environment => 'rp_env',
     :osfamily    => 'Debian',
   }
 end
