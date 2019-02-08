@@ -13,15 +13,17 @@ before_install:
 
 sudo: false
 
-script: 'SPEC_OPTS="--format documentation" bundle exec rake validate lint spec strings:generate reference'
+script: 'SPEC_OPTS="--format documentation" bundle exec rake $CHECK'
 
 matrix:
   fast_finish: true
   include:
   - rvm: 2.4.4
-    env: PUPPET_GEM_VERSION="~> 5"
+    env: PUPPET_GEM_VERSION="~> 5" CHECK=test
   - rvm: 2.5.3
-    env: PUPPET_GEM_VERSION="~> 6"
+    env: PUPPET_GEM_VERSION="~> 6" CHECK=test
+  - rvm: 2.4.4
+    env: PUPPET_GEM_VERSION="~> 5" CHECK=build DEPLOY_TO_FORGE=yes
 
 notifications:
   email: false
@@ -33,4 +35,7 @@ deploy:
     secure: "P8gSteUJAx2UJm3wtXsO72eLN1urDqsDbg8KbXN5Nh3mCvdUMooO7J0BtkfgGed53AzOYLdS5q5M07Hqmgj3QbVLiCMVzoMbbyfkXxmvbAvmzqinATSJzrSEyljz3gSYz1yIafUJN7XjWiZ+aVQpOQxV6sSWZvja/k9xC1tmjf2OP5fwnjJvkzz8Wzb1EJhb7Vk1xZL38XACs2vUMm0PupoowU2qtBx+675Cu4kI2ZagvhpZRl9wfKAio/gYU4uJ1SFrvelMx+HYyqezFYdFDUev56bXuJJ8dhGJdvDairuB3a5z4kNO5tD1C8YRfT0wmzHkIhi0EhtyrY3GaGntxWKooa6gw0qmCerheNaAjxEJWjsAJokiYUJK+huSlbMKZxqectsOhj6OS97+q9cyFqjsDkNxJ1Tu15WMdWpWSNLoFHqK/eW/xy1USIGNy6myi48CZrdEg7oVp8DgHYMC1AFr1YBZ94B/od09fDWe58CHRScpz8soNt3Vlu3VsrIFFH8pLZGd8VIXrIhAxCGFtKr+IkeBoWDKk4v43Pf50IV++Z5aNg8lgdhkLoIn+KlQzGcXi17UdegSJHl2YzwTGVsJ12s86Z7jk2xQYhtINTH4b5IRC4EisXXgduIDBCQd0aiGFctPIQrSPhJM3+JwSqElHJpdaJ+uBGUEvSQX2YE="
   on:
     tags: true
+    # all_branches is required to use tags
     all_branches: true
+    # Only publish the build marked with "DEPLOY_TO_FORGE"
+    condition: "$DEPLOY_TO_FORGE = yes"

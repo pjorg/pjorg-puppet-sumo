@@ -27,3 +27,15 @@ desc 'Generate REFERENCE.md'
 task :reference do
   sh 'puppet strings generate --format markdown'
 end
+
+desc 'Run tests'
+task :test do
+  [:validate,
+   :lint,
+   :spec,
+   :'strings:generate',
+   :reference
+  ].each do |test|
+    Rake::Task[test].invoke
+  end
+end
