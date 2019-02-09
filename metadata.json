@@ -1,6 +1,6 @@
 {
   "name": "pjorg-sumo",
-  "version": "1.4.0",
+  "version": "1.4.2",
   "author": "Peter D. Jorgensen",
   "summary": "Install and manage the Sumo Logic collector and its log sources.",
   "license": "MIT",
