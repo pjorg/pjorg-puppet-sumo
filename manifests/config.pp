@@ -20,6 +20,7 @@ class sumo::config {
     proxypassword             => $::sumo::proxypassword,
     proxyport                 => $::sumo::proxyport,
     proxyuser                 => $::sumo::proxyuser,
+    serviceconfig             => $::sumo::serviceconfig,
     sources                   => $::sumo::sources,
     syncsources               => $::sumo::syncsources,
     syncsourceswithsinglejson => $::sumo::syncsourceswithsinglejson,
