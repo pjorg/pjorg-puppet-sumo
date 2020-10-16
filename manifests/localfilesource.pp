@@ -17,6 +17,7 @@ define sumo::localfilesource (
   $useautolinematching        = undef,
   $manualprefixregexp         = undef,
   $forcetimezone              = undef,
+  $cutoffrelativetime         = undef,
   $defaultdateformat          = undef,
   $filters                    = undef,
   $blacklist                  = undef,
