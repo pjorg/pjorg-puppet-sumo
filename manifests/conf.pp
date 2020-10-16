@@ -4,21 +4,23 @@
 # initial setup.
 #
 define sumo::conf (
-  $accessid        = undef,
-  $accesskey       = undef,
-  $clobber         = undef,
-  $email           = undef,
-  $ephemeral       = undef,
-  $collectorname   = undef,
-  $override        = undef,
-  $password        = undef,
-  $proxyhost       = undef,
-  $proxyntlmdomain = undef,
-  $proxypassword   = undef,
-  $proxyport       = undef,
-  $proxyuser       = undef,
-  $sources         = undef,
-  $syncsources     = undef,
+  $accessid                  = undef,
+  $accesskey                 = undef,
+  $clobber                   = undef,
+  $email                     = undef,
+  $ephemeral                 = undef,
+  $collectorname             = undef,
+  $override                  = undef,
+  $password                  = undef,
+  $proxyhost                 = undef,
+  $proxyntlmdomain           = undef,
+  $proxypassword             = undef,
+  $proxyport                 = undef,
+  $proxyuser                 = undef,
+  $serviceconfig             = undef,
+  $sources                   = undef,
+  $syncsources               = undef,
+  $syncsourceswithsinglejson = undef,
 ) {
 
   include ::sumo
@@ -50,12 +52,19 @@ define sumo::conf (
       purge   => $syncsources_purge,
       recurse => $syncsources_recurse,
     }
-    $syncsourceswithtrailingslash = "${syncsources}/"
-  } else {
-    $syncsourceswithtrailingslash = undef
   }
 
-  file { $::sumo::params::sumo_service_config:
+  if $syncsourceswithsinglejson != undef {
+    validate_absolute_path($syncsourceswithsinglejson)
+  }
+
+  if ( $syncsourceswithsinglejson != undef) {
+      $syncsourceswithtrailingslash = $syncsourceswithsinglejson
+    } else {
+      $syncsourceswithtrailingslash = "${syncsources}/"
+  }
+
+  file { $serviceconfig:
     ensure  => file,
     owner   => 'root',
     group   => 'root',
